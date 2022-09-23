@@ -1,23 +1,27 @@
-async function populateDropdownMenu(){
+console.log("hello");
+
+async function readCountryData(){
     try{
-        //var element = document.getElementById("countyList");
+        console.log(document);
+        var element = document.getElementById("countyList");
         let fetchRes = await fetch("https://xc-countries-api.herokuapp.com/api/countries/");
         let res = await fetchRes.json();
         var countries = [];
-        /*fetchRes.then(res => res.json()).then(data => {
-            countries.push(data);
-        });*/
+
         res.forEach(element => {
             countries.push(element)
         });
-        console.log(countries);
-        console/log
-        console.log("test");
+
+        return countries;
 
     }catch(err){
         console.log(err);
     }
-
 }
 
-populateDropdownMenu();
+function populateDropdownMenu(){
+    countries = readCountryData();
+    
+}
+
+window.addEventListener('DOMContentLoaded', populateDropdownMenu);
