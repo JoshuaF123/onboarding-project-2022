@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 async function populateDropdownMenu(){
     try{
         //var element = document.getElementById("countyList");
@@ -11,7 +12,7 @@ async function populateDropdownMenu(){
             countries.push(element)
         });
         console.log(countries);
-        console/log
+        console.log(countries[0]);
         console.log("test");
 
     }catch(err){
