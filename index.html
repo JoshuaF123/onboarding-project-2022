@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<head>
-    <title>OnBoarding Project</title>
-</head>
-
-<body>
-    <script src = "main.js"></script>
-    <div>
-        <h1>Hello!</h1>
-        <label for = "countryList">Please select a country</label>
-            <select id = "countryList" name = "countryList">
-                <!--populate country list using the JS GET from step 1-->
-                <option>Select a country. You can add a new one later</option>
+<html>
+    <head>
+        <title>OnBoarding Project</title>
+    </head>
+    
+    <body>
+        <script src = "main.js"></script>
+        <div>
+            <h1>Hello!</h1>
+            <label for = "countryList">Please select a country</label>
+                <select id = "countryList" name = "countryList">
+                    <!--populate country list using the JS GET from step 1-->
+                    <option>Select a country.</option>
+                </select>
+        </div>
+    
+        <div>
+            <!--This should only appear after a country has been selected-->
+            <label for = "stateList">Now select a state</label>
+            <select id = "stateList" name = "stateList">
+                <!--populate country list with step 2-->
+                <option>Select a state.</option>
             </select>
-    </div>
-
-    <div>
-        <!--This should only appear after a country has been selected-->
-        <label for = "stateList">Now select a state</label>
-        <select id = "stateList" name = "stateList">
-            <!--populate country list with step 2-->
-        </select>
-    </div>
-</body>
+        </div>
+    </body>
+</html>

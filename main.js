@@ -1,5 +1,11 @@
 console.log("hello");
 
+/*
+This function fetchs the country list from the provided URL,
+saves it in a JSON array, then puts that data into a useable
+array.
+@return: A usable array containing all the data from the URL.
+*/    
 async function readCountryData(){
     try{
         console.log(document);
@@ -19,6 +25,10 @@ async function readCountryData(){
     }
 }
 
+/*
+The functions takes the information that populateDropdownMenu
+collects, then adds it to the country dropdown menu.
+*/
 async function populateDropdownMenu(){
     let countries = await readCountryData();
     console.log(countries);
@@ -27,7 +37,7 @@ async function populateDropdownMenu(){
         var country = countries[x];
         var el = document.createElement("option");
         el.text = country.name;
-        el.value = country.code;
+        el.id = country.code;
         dropdownMenu.add(el);
     }
 }
