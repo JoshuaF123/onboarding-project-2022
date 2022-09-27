@@ -8,7 +8,6 @@ array. Try to rework so that it works for state and country.
 */    
 async function readDatabase(url){
     try{
-        console.log(url);
         //let tempURL = encodeURI(url)
         let fetchRes = await fetch(url.toString());
         let res = await fetchRes.json();
@@ -33,10 +32,13 @@ async function populateDropdownMenu(id, url){
     let optionsFromDatabase = await readDatabase(url);
     console.log(optionsFromDatabase);
     let dropdownMenu = document.getElementById(id);
-    dropdownMenu.onclick = function(){
-        var options = document.querySelectorAll("#countryList option");
+    //This clears out the options everytime you click the
+    //dropdown menu, but that prevents us from having a
+    //selected element
+    /*dropdownMenu.onclick = function(){
+        var options = document.querySelectorAll("#"+ id +" option");
         options.forEach(o => o.remove());
-    }
+    }*/
     for(let x = 0 ; x < optionsFromDatabase.length; x++){
         var place = optionsFromDatabase[x];
         var el = document.createElement("option");
@@ -47,17 +49,26 @@ async function populateDropdownMenu(id, url){
 }
 
 window.addEventListener('DOMContentLoaded', function(){
+    let clickedCountry = false;
+    let clickedState = false
     document.getElementById("countryList").addEventListener('click', function(){
-        populateDropdownMenu("countryList", "https://xc-countries-api.herokuapp.com/api/countries/");
-    })
-});
-
-window.addEventListener('DOMContentLoaded', function(){
+        if(clickedCountry === false){
+            populateDropdownMenu("countryList", "https://xc-countries-api.herokuapp.com/api/countries/");
+            clickedCountry = true;
+        }
+    });
     document.getElementById("stateList").addEventListener('click', function(){
-        let urlPt1 = "https://xc-countries-api.herokuapp.com/api/countries/";
-        let choosenCountry = "";
-        let urlPt2 = "/states/";
-        let finalURL = urlPt1+choosenCountry+urlPt2;
-        populateDropdownMenu("stateList");
-    })
+        if(clickedState === false){
+            let urlPt1 = "https://xc-countries-api.herokuapp.com/api/countries/";
+            let urlPt2 = "/states/";
+    
+            let choice = document.getElementById("countryList");    
+            let choosenCountry = choice.value;
+    
+            let finalURL = urlPt1+choosenCountry+urlPt2;
+            populateDropdownMenu("stateList", finalURL);
+            clickedState = true;
+        }
+
+    });
 });
