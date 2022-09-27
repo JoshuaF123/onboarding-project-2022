@@ -3,7 +3,7 @@ console.log("hello");
 /*
 This function fetchs the country list from the provided URL,
 saves it in a JSON array, then puts that data into a useable
-array.
+array. Try to rework so that it works for state and country.
 @return: A usable array containing all the data from the URL.
 */    
 async function readCountryData(){
@@ -42,5 +42,16 @@ async function populateDropdownMenu(){
     }
 }
 
-window.addEventListener('DOMContentLoaded', readCountryData);
-window.addEventListener('DOMContentLoaded', populateDropdownMenu);
+window.addEventListener('DOMContentLoaded', function(){
+    document.getElementById("countryList").addEventListener('click', function(){
+        readCountryData();
+        populateDropdownMenu();
+    })
+});
+
+window.addEventListener('DOMContentLoaded', function(){
+    document.getElementById("stateList").addEventListener('click', function(){
+        readCountryData();
+        populateDropdownMenu();
+    })
+});
