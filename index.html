@@ -15,12 +15,25 @@
                 </select>
         </div> 
         <div>
-            <!--This should only appear after a country has been selected-->
             <label for = "stateListText">Now select a state</label>
             <select id = "stateList" name = "stateList">
                 <!--populate country list with step 2-->
                 <option>Select a state.</option>
             </select>
         </div>
+        <form>
+            <label for = "addCountry">Add Country</label><br>
+            <div>
+                <label for = "promptCountryName">Country Name</label>
+                <input id = "userCountryName" type = "text" />
+            </div>
+                <label for = "promptCountryCode">Country Code</label>
+                <input id = "userCountryCode" type = "text" />
+            <div>
+                <input  type = "submit" 
+                        id = "addCountryButton"
+                        onclick="">
+            </div>
+        </form>
     </body>
 </html>
