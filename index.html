@@ -22,7 +22,7 @@
             </select>
         </div>
         <!--onSubmit="event.preventDefault();"-->
-        <form id = "addLocation" onSubmit="event.preventDefault()";>
+        <form id = "addCountry">
             <label for = "addCountry">Add Country</label><br>
             <div>
                 <label for = "userCountryName">Country Name</label>
@@ -31,7 +31,19 @@
                 <label for = "userCountryCode">Country Code</label>
                 <input id = "userCountryCode" type = "text" value = ""/>
             <div>
-                <button  type = "submit" id = "submitButton">Submit</button>
+                <button  type = "submit" id = "submitButtonCountry">Submit Country</button>
+            </div>
+        </form>
+        <form id = "addState">
+            <label for = "addState">Add State</label><br>
+            <div>
+                <label for = "userStateName">State Name</label>
+                <input id = "userStateName" type = "text" value = ""/>
+            </div>
+                <label for = "userStateCode">State Code</label>
+                <input id = "userStateCode" type = "text" value = ""/>
+            <div>
+                <button  type = "submit" id = "submitButtonState">Submit State</button>
             </div>
         </form>
     </body>

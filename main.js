@@ -43,6 +43,7 @@ async function populateDropdownMenu(id, url){
         var el = document.createElement("option");
         el.text = place.name;
         el.value = place.code;
+        el.num = place.id;
         dropdownMenu.add(el);
     }
 }
@@ -52,18 +53,53 @@ This is the function for adding countries to the country list.
 It starts by reading the user entries into an object called
 "newCountry". newcountry has the attributes necessary for
 countries in this program.
-*need to post to database*
 *need to make it work with states* 
 */
-function submit(){
+function submit(url, countryOrState){
     console.log("Arrived at submit()");
 
-    let newCountry = {
-        "code": document.getElementById("userCountryCode").value,
-        "name": document.getElementById("userCountryName").value
+    let newLocation;
+
+    if(countryOrState === "country"){
+        console.log("country");
+        newLocation = {
+            "code": document.getElementById("userCountryCode").value,
+            "name": document.getElementById("userCountryName").value
+        }    
+    }
+    else if(countryOrState === "state"){
+        console.log("state");
+        console.log(document.getElementById("countryList"));
+        let select = document.getElementById("countryList");
+        newLocation = {
+            "code": document.getElementById("userStateCode").value,
+            "name": document.getElementById("userStateName").value,
+            "countryId": select.options[select.selectedIndex].num
+            
+        }   
+    }
+    else{
+        console.log("Invalid option. submit's second parameter must be \"country\" or \"state\"");
+        return;
     }
 
-    console.log(newCountry);
+    console.log(newLocation);
+
+    fetch(url.toString(), {
+        //mode: 'no-cors',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newLocation),
+        })
+        .then((response) => response.json())
+        .then((newLocation) => {
+            console.log('Success:', newLocation);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 
 }
 
@@ -106,6 +142,14 @@ window.addEventListener('DOMContentLoaded', function(){//end1
         populateDropdownMenu("stateList", finalURL);
     });//start3
 
-    document.getElementById("addLocation").addEventListener("submit", submit);
+    document.getElementById("addCountry").addEventListener("submit", function(){
+        let url = "https://xc-countries-api.herokuapp.com/api/countries/";
+        submit(url, "country");
+    });
+
+    document.getElementById("addState").addEventListener("submit", function(){
+        let url = "https://xc-countries-api.herokuapp.com/api/states/";
+        submit(url, "state");
+    });
 
 });//end1
