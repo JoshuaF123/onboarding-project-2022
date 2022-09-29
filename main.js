@@ -51,6 +51,22 @@ async function addCountry(url){
     const response = await fetch(url, {method: 'POST'});
 }
 
+function submit(){
+    console.log("Arrived at submit()");
+    /*
+    let cCode = document.getElementById("userCountryCode").value;
+    let cName = document.getElementById("userCountryName").value;
+    */
+
+    let newCountry = {
+        "code": document.getElementById("userCountryCode").value,
+        "name": document.getElementById("userCountryName").value
+    }
+
+    console.log(newCountry);
+
+}
+
 //This part is basically the main function. On load, populate the
 //country dropdown menu by calling 'populateDropdownMenu' function.
 //This in turn forces the state list to populate. The statelist will update
@@ -89,4 +105,7 @@ window.addEventListener('DOMContentLoaded', function(){//end1
 
         populateDropdownMenu("stateList", finalURL);
     });//start3
+
+    document.getElementById("addLocation").addEventListener("submit", submit);
+
 });//end1

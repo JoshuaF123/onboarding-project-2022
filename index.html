@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang = "en">
     <head>
         <title>OnBoarding Project</title>
     </head>
@@ -8,31 +8,30 @@
         <script src = "main.js"></script>
         <h1>Hello!</h1>
         <div onclick="">
-            <label for = "countryListText">Please select a country</label>
+            <label for = "countryList">Please select a country</label>
                 <select id = "countryList" name = "countryList">
                     <!--populate country list using the JS GET from step 1-->
                     <option>Select a country.</option>
                 </select>
         </div> 
         <div>
-            <label for = "stateListText">Now select a state</label>
+            <label for = "stateList">Now select a state</label>
             <select id = "stateList" name = "stateList">
                 <!--populate country list with step 2-->
                 <option>Select a state.</option>
             </select>
         </div>
-        <form>
+        <!--onSubmit="event.preventDefault();"-->
+        <form id = "addLocation" onSubmit="event.preventDefault()";>
             <label for = "addCountry">Add Country</label><br>
             <div>
-                <label for = "promptCountryName">Country Name</label>
-                <input id = "userCountryName" type = "text" />
+                <label for = "userCountryName">Country Name</label>
+                <input id = "userCountryName" type = "text" value = ""/>
             </div>
-                <label for = "promptCountryCode">Country Code</label>
-                <input id = "userCountryCode" type = "text" />
+                <label for = "userCountryCode">Country Code</label>
+                <input id = "userCountryCode" type = "text" value = ""/>
             <div>
-                <input  type = "submit" 
-                        id = "addCountryButton"
-                        onclick="">
+                <button  type = "submit" id = "submitButton">Submit</button>
             </div>
         </form>
     </body>
