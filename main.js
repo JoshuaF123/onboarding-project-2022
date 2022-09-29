@@ -47,16 +47,16 @@ async function populateDropdownMenu(id, url){
     }
 }
 
-async function addCountry(url){
-    const response = await fetch(url, {method: 'POST'});
-}
-
+/*
+This is the function for adding countries to the country list.
+It starts by reading the user entries into an object called
+"newCountry". newcountry has the attributes necessary for
+countries in this program.
+*need to post to database*
+*need to make it work with states* 
+*/
 function submit(){
     console.log("Arrived at submit()");
-    /*
-    let cCode = document.getElementById("userCountryCode").value;
-    let cName = document.getElementById("userCountryName").value;
-    */
 
     let newCountry = {
         "code": document.getElementById("userCountryCode").value,
