@@ -49,10 +49,15 @@ async function populateDropdownMenu(id, url){
 }
 
 /*
-This is the function for adding countries to the country list.
-It starts by reading the user entries into an object called
-"newCountry". newcountry has the attributes necessary for
-countries in this program.
+This is the function for adding locations to the corresponding
+location database & dropdown menu. It starts by reading the 
+user entries into an object called "newLocation. NewLocations
+that are determined to be states have an additional attribute of
+"countryId" that is required so they comply with the format requi-
+rements of the data base. NewLocation is then added to the database.
+@param url: the url of the database you're adding the location to.
+@param countryOrState: A string paramater that should only be "country"
+or "state". The program will not function with other values.
 *need to make it work with states* 
 */
 function submit(url, countryOrState){
